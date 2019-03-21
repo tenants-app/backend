@@ -1,9 +1,11 @@
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const mongoose = require('mongoose');
-const secret = require('.').secret;
+import mongoose from 'mongoose';
+import passport from 'passport';
+import passportLocal from 'passport-local';
+import passportJWT from 'passport-jwt';
+import config from '.';
+const secret = config.secret;
 const User = mongoose.model('User');
-const passportJWT = require("passport-jwt");
+const LocalStrategy = passportLocal.Strategy;
 const JWTStrategy   = passportJWT.Strategy;
 const ExtractJWT = passportJWT.ExtractJwt;
 

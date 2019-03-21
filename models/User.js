@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
-const crypto = require('crypto');
-const jwt = require('jsonwebtoken');
-const secret = require('../config').secret;
+import mongoose from 'mongoose';
+import uniqueValidator from 'mongoose-unique-validator';
+import crypto from 'crypto';
+import jwt from'jsonwebtoken';
+import config from '../config';
+const secret = config.secret;
 
 const UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], index: true},

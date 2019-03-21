@@ -1,25 +1,24 @@
-const http = require('http'),
-      path = require('path'),
-      methods = require('methods'),
-      express = require('express'),
-      bodyParser = require('body-parser'),
-      session = require('express-session'),
-      cors = require('cors'),
-      passport = require('passport'),
-      errorhandler = require('errorhandler'),
-      mongoose = require('mongoose'),
-      dotenv = require('dotenv');
+import express from 'express';
+import http from 'http';
+import path from 'path';
+import methods from 'methods';
+import dotenv from 'dotenv';
+import mongoose from 'mongoose';
+import errorhandler from 'errorhandler';
+import passport from 'passport';
+import cors from 'cors';
+import session from 'express-session';
+import bodyParser from 'body-parser';
+import morgan from 'morgan'
 
 dotenv.config();
 
 const isProduction = process.env.NODE_ENV === 'production';
-
-// Create global app object
 const app = express();
 
 // Normal express config defaults
 app.use(cors());
-app.use(require('morgan')('dev'));
+app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -28,23 +27,25 @@ app.use(express.static(__dirname + '/public'));
 
 app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false  }));
 
-if (!isProduction) {
-  app.use(errorhandler());
-}
-
 // mongose
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
-require('./models/User');
+// import all models here
+import User from './models/User';
 
 // app routes
-app.use(require('./routes'));
+import routes from './routes';
+app.use(routes);
 
 // passport initialize
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./config/passport');
+import passportConfig from './config/passport';
+
+if (!isProduction) {
+  app.use(errorhandler());
+}
 
 /// catch 404 and forward to error handler
 app.use((req, res, next) => {
