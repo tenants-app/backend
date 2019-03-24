@@ -25,8 +25,6 @@ npm install
 **_W pliku .env należy ustawić odpowiednie dane dostępu do bazy danych itp._**
 
 
-```
-
 3. **Uruchomienie aplikacji**
 
 ```
