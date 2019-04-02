@@ -1,0 +1,39 @@
+{
+  "name": "tenants",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Filip",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cors": "2.7.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^7.0.0",
+    "ejs": "2.4.1",
+    "errorhandler": "1.4.3",
+    "express": "^4.16.4",
+    "express-jwt": "3.3.0",
+    "express-session": "1.13.0",
+    "jsonwebtoken": "^8.5.1",
+    "method-override": "^3.0.0",
+    "mongodb": "^3.1.13",
+    "mongoose": "^5.4.19",
+    "mongoose-unique-validator": "^2.0.2",
+    "morgan": "^1.9.1",
+    "passport": "0.3.2",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "1.0.0",
+    "request": "2.69.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.2",
+    "nodemon": "^1.18.10"
+  }
+}
