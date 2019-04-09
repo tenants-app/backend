@@ -1,11 +1,9 @@
-import mongoose from 'mongoose';
 import express from 'express';
-import { getUsers } from '../controllers/users'
-const User = mongoose.model('User');
+import UserController from '../controllers/users'
 const router = express.Router();
 
 
-router.get('/', getUsers);
+router.get('/', UserController.getUsers);
 
 
 export default router;
