@@ -32,6 +32,7 @@ export default {
 
     user.username = req.body.username;
     user.email = req.body.email;
+    user.bank_account_number = req.body.bank_account_number;
     user.setPassword(req.body.password);
 
     user.save().then(() => {
