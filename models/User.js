@@ -8,6 +8,7 @@ const secret = config.secret;
 const UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], index: true},
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+  bank_account_number: {type: String, required: [true, "can't be blank"]},
   hash: String,
   salt: String
 }, {timestamps: true});
@@ -32,17 +33,16 @@ UserSchema.methods.generateJWT = function() {
   return jwt.sign({
     id: this._id,
     username: this.username,
+    email: this.email,
+    bank_account_number: this.bank_account_number,
     exp: parseInt(exp.getTime() / 1000),
   }, secret);
 };
 
 UserSchema.methods.toAuthJSON = function(){
   return {
-    username: this.username,
-    email: this.email,
     token: this.generateJWT()
   };
 };
-
 
 mongoose.model('User', UserSchema);
