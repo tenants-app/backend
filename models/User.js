@@ -8,6 +8,7 @@ const secret = config.secret;
 const UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], index: true},
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
+  bank_account_number: {type: number, required: [true, "can't be blank"]},
   hash: String,
   salt: String
 }, {timestamps: true});
@@ -38,8 +39,6 @@ UserSchema.methods.generateJWT = function() {
 
 UserSchema.methods.toAuthJSON = function(){
   return {
-    username: this.username,
-    email: this.email,
     token: this.generateJWT()
   };
 };
