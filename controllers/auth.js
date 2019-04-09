@@ -37,6 +37,9 @@ export default {
 
     user.save().then(() => {
       return res.json({user: user.toAuthJSON()});
-    }).catch(next);
+    }).catch((err) => {
+      return res.status(400).json(err);
+    });
   }
+  
 }
