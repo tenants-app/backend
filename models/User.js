@@ -9,8 +9,8 @@ const UserSchema = new mongoose.Schema({
   username: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], index: true},
   email: {type: String, lowercase: true, unique: true, required: [true, "can't be blank"], match: [/\S+@\S+\.\S+/, 'is invalid'], index: true},
   bank_account_number: {type: String, required: [true, "can't be blank"]},
-  hash: String,
-  salt: String
+  hash: { type: String, select: false },
+  salt: { type: String, select: false }
 }, {timestamps: true});
 
 UserSchema.plugin(uniqueValidator, {message: 'is already taken.'});
