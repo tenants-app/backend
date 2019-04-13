@@ -2,6 +2,7 @@ import express from 'express';
 import http from 'http';
 import path from 'path';
 import methods from 'methods';
+import expressValidator from 'express-validator';
 import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import errorhandler from 'errorhandler';
@@ -21,6 +22,7 @@ app.use(cors());
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(expressValidator());
 
 app.use(require('method-override')());
 app.use(express.static(__dirname + '/public'));
@@ -30,8 +32,8 @@ app.use(session({ secret: 'conduit', cookie: { maxAge: 60000 }, resave: false, s
 // mongose
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
-// import all models here
-import User from './models/User';
+// import models
+import Models from './models/index';
 
 // app routes
 import routes from './routes';

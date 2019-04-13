@@ -19,6 +19,7 @@
     "express": "^4.16.4",
     "express-jwt": "3.3.0",
     "express-session": "1.13.0",
+    "express-validator": "^5.3.1",
     "jsonwebtoken": "^8.5.1",
     "method-override": "^3.0.0",
     "mongodb": "^3.1.13",
