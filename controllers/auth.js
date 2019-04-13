@@ -5,15 +5,9 @@ const User = mongoose.model('User');
 export default {
 
   login: (req, res, next) => {
-    if(!req.body.email){
-      return res.status(422).json({errors: {email: "can't be blank"}});
-    }
-
-    if(!req.body.password){
-      return res.status(422).json({errors: {password: "can't be blank"}});
-    }
 
     passport.authenticate('local', {session: false}, (err, user, info) => {
+      
       if(err){ 
         return next(err); 
       }
@@ -24,6 +18,7 @@ export default {
       } else {
         return res.status(422).json(info);
       }
+
     })(req, res, next);
   },
 
