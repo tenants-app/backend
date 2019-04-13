@@ -10,7 +10,10 @@ import passport from 'passport';
 import cors from 'cors';
 import session from 'express-session';
 import bodyParser from 'body-parser';
-import morgan from 'morgan'
+import morgan from 'morgan';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from './swagger.json';
+
 
 dotenv.config();
 
@@ -44,6 +47,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 import passportConfig from './config/passport';
+
+// swagger
+app.use('/documentation', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/api/v1', routes);
 
 if (!isProduction) {
   app.use(errorhandler());
