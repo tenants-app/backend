@@ -7,12 +7,12 @@ const GroupSchema = new mongoose.Schema({
     members: [{ type: Schema.Types.ObjectId, ref: 'User' }]
   }, {timestamps: true});
 
-GroupSchema.methods.attachMember = (user) => {
+GroupSchema.methods.attachMember = function(user) {
   let memberExist = this.members.some(member => member.equals(user._id));
 
   if(!memberExist){
     this.members.push(user._id);
   }
-}
+};
 
 mongoose.model('Group', GroupSchema);
