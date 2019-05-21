@@ -19,6 +19,17 @@ export default {
         });
     },
 
+    getGroup: async (req, res, next) => {
+        Group.findOne({_id: req.params.id}).then((group) => {
+            if (!group.members.some(member => member.equals(req.user._id))) {
+                return res.status(403).json({message: "Not a group member"});
+            }
+            return res.json(group);
+        }).catch((err) => {
+            return res.status(404).json({error: {message: "Group cannot be found"}});
+        });
+    },
+
     generateMemberLink: (req, res, next) => {
         let memberLink = new GroupActivationLink();
         memberLink.email = req.body.email;

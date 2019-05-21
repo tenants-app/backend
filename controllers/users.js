@@ -14,7 +14,7 @@ export default {
 
   getUserGroups: (req, res, next) => {
     Group.find({members: req.user._id}).populate(['members', 'owner']).then((groups) => {
-      return res.json({groups: groups});
+      return res.json(groups);
     }).catch((err) => {
       return res.status(400).json(err);
     });
