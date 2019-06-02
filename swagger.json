@@ -1,0 +1,249 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Tenants API",
+    "description": "Tenants backend API documentation",
+    "version": "0.1.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Login user",
+        "description": "Returns access token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "email": "example@example.com",
+                  "password": "test123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "user": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYWNlNzZlOTJlN2FmMjJiYmQ0YjkzYyIsImV4cCI6MTU2MDM1OTM2NywiaWF0IjoxNTU1MTc1MzY3fQ.Rlyx4L4RNqLLJy306jOEZ2yR_PICum3QdSgw1cr2o_4"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "summary": "Register user",
+        "description": "Returns access token",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "username": "example",
+                  "email": "example@example.com",
+                  "password": "test123",
+                  "bank_account_number": "123123123123123123123123123"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "user": {
+                      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjYWNlNzZlOTJlN2FmMjJiYmQ0YjkzYyIsImV4cCI6MTU2MDM1OTM2NywiaWF0IjoxNTU1MTc1MzY3fQ.Rlyx4L4RNqLLJy306jOEZ2yR_PICum3QdSgw1cr2o_4"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/users/groups": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get user groups",
+        "description": "Returns all groups where user belong",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "groups": [
+                      {
+                        "members": [
+                          {
+                            "_id": "5c91564abb6d7f5780d072ff",
+                            "username": "example122",
+                            "email": "example@exmple.com",
+                            "createdAt": "2019-03-19T20:51:22.481Z",
+                            "updatedAt": "2019-03-19T20:51:22.481Z"
+                          }
+                        ],
+                        "_id": "5cb0ccfcbbdabd3ea2600d72",
+                        "name": "Nowa grupa",
+                        "owner": {
+                          "_id": "5c91564abb6d7f5780d072ff",
+                          "username": "example122",
+                          "email": "example@exmple.com",
+                          "createdAt": "2019-03-19T20:51:22.481Z",
+                          "updatedAt": "2019-03-19T20:51:22.481Z"
+                        },
+                        "createdAt": "2019-04-12T17:38:04.747Z",
+                        "updatedAt": "2019-04-12T17:38:04.747Z"
+                      },
+                      {
+                        "members": [
+                          {
+                            "_id": "5c91564abb6d7f5780d072ff",
+                            "username": "example122",
+                            "email": "example@exmple.com",
+                            "createdAt": "2019-03-19T20:51:22.481Z",
+                            "updatedAt": "2019-03-19T20:51:22.481Z"
+                          }
+                        ],
+                        "_id": "5cb0d2ad4c0ee5406365be2b",
+                        "name": "Druga grupa",
+                        "owner": {
+                          "_id": "5c91564abb6d7f5780d072ff",
+                          "username": "example122",
+                          "email": "example@exmple.com",
+                          "createdAt": "2019-03-19T20:51:22.481Z",
+                          "updatedAt": "2019-03-19T20:51:22.481Z"
+                        },
+                        "createdAt": "2019-04-12T18:02:21.240Z",
+                        "updatedAt": "2019-04-12T20:06:10.170Z"
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/new": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Add new group",
+        "description": "Returns all groups where user belong",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "name": "Example Group"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "group": {
+                        "members": [
+                            "5c91564abb6d7f5780d072ff"
+                        ],
+                        "_id": "5cb22da165f312860a7f4472",
+                        "name": "exampleeGroup",
+                        "owner": "5c91564abb6d7f5780d072ff",
+                        "createdAt": "2019-04-13T18:42:41.535Z",
+                        "updatedAt": "2019-04-13T18:42:41.535Z"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/generate_member_link": {
+      "post": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Generate member invitation link",
+        "description": "Returns link to activate member in group",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "email": "example@example.com",
+                  "group_id": "5cb22da165f312860a7f4472"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "link": "http://localhost:3000/groups/activate_member/fee7005951a3c52419bf170c97e851299ddb8ba5b30a35c03467de3b7c5ce6b5eb09442702d10739c02d4832da0dfed439058496de2843ad2a4d47c07694e69d"
+                }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  },
+  "security": {
+    "bearerAuth": []
+  }
+}
