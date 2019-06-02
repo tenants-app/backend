@@ -6,7 +6,7 @@ const checkAuth = passport.authenticate('jwt', {session: false});
 
 
 router.get('/', checkAuth, UserController.getUsers);
-router.get('/groups', checkAuth, UserController.getUserGroups)
+router.get('/groups', checkAuth, UserController.getUserGroups);
 
 
 export default router;
