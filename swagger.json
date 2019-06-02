@@ -181,14 +181,14 @@
                 "schema": {
                   "example": {
                     "group": {
-                        "members": [
-                            "5c91564abb6d7f5780d072ff"
-                        ],
-                        "_id": "5cb22da165f312860a7f4472",
-                        "name": "exampleeGroup",
-                        "owner": "5c91564abb6d7f5780d072ff",
-                        "createdAt": "2019-04-13T18:42:41.535Z",
-                        "updatedAt": "2019-04-13T18:42:41.535Z"
+                      "members": [
+                        "5c91564abb6d7f5780d072ff"
+                      ],
+                      "_id": "5cb22da165f312860a7f4472",
+                      "name": "exampleeGroup",
+                      "owner": "5c91564abb6d7f5780d072ff",
+                      "createdAt": "2019-04-13T18:42:41.535Z",
+                      "updatedAt": "2019-04-13T18:42:41.535Z"
                     }
                   }
                 }
@@ -225,7 +225,440 @@
                 "schema": {
                   "example": {
                     "link": "http://localhost:3000/groups/activate_member/fee7005951a3c52419bf170c97e851299ddb8ba5b30a35c03467de3b7c5ce6b5eb09442702d10739c02d4832da0dfed439058496de2843ad2a4d47c07694e69d"
+                  }
                 }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/members": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Get members of group",
+        "description": "Returns members of group",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "members": [
+                      {
+                        "_id": "5cdb048df901520606166a59",
+                        "username": "test testowski",
+                        "email": "test@example.com",
+                        "bank_account_number": "2137",
+                        "createdAt": "2019-05-14T18:10:22.313Z",
+                        "updatedAt": "2019-05-14T18:10:22.313Z",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "5ccaff4d664c582c6b8d6e29",
+                        "username": "janusz",
+                        "email": "janusz@example.com",
+                        "bank_account_number": "2137",
+                        "createdAt": "2019-05-02T14:31:42.124Z",
+                        "updatedAt": "2019-05-02T14:31:42.124Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/members/{userId}": {
+      "get": {
+        "tags": [
+          "Group"
+        ],
+        "summary": "Get single member of group",
+        "description": "Returns single member of group",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "member": {
+                      "_id": "5cdb048df901520606166a59",
+                      "username": "test testowski",
+                      "email": "test@example.com",
+                      "bank_account_number": "2137",
+                      "createdAt": "2019-05-14T18:10:22.313Z",
+                      "updatedAt": "2019-05-14T18:10:22.313Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/bills": {
+      "get": {
+        "tags": [
+          "Bills"
+        ],
+        "summary": "Get bills in group",
+        "description": "Returns bills of group",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "bills": [
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf41cd921eacd40e4bdfd11",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 10.69,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf41cd921eacd40e4bdfd10",
+                        "name": "Rachunki 1",
+                        "value": 21.37,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T19:00:41.853Z",
+                        "updatedAt": "2019-06-02T19:00:41.853Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf41df846d29f077898b4f0",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 10.69,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf41df746d29f077898b4ef",
+                        "name": "Rachunki 1",
+                        "value": 21.37,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T19:05:28.071Z",
+                        "updatedAt": "2019-06-02T19:05:28.071Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf41df946d29f077898b4f3",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 10.69,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf41df946d29f077898b4f2",
+                        "name": "Rachunki 1",
+                        "value": 21.37,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T19:05:29.750Z",
+                        "updatedAt": "2019-06-02T19:05:29.750Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf41dfa46d29f077898b4f6",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 10.69,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf41dfa46d29f077898b4f5",
+                        "name": "Rachunki 1",
+                        "value": 21.37,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T19:05:30.517Z",
+                        "updatedAt": "2019-06-02T19:05:30.517Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf41dfb46d29f077898b4f9",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 10.69,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf41dfb46d29f077898b4f8",
+                        "name": "Rachunki 1",
+                        "value": 21.37,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T19:05:31.216Z",
+                        "updatedAt": "2019-06-02T19:05:31.216Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf42911f23a432f88465e94",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 10.69,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf42910f23a432f88465e93",
+                        "name": "Rachunki 1",
+                        "value": 21.37,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T19:52:49.490Z",
+                        "updatedAt": "2019-06-02T19:52:49.490Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf42fe55e52cd4910a4f62e",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 105,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf42fe45e52cd4910a4f62d",
+                        "name": "Cośtam",
+                        "value": 210,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T20:21:57.300Z",
+                        "updatedAt": "2019-06-02T20:21:57.300Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf4312c8b1c3c4a5052a276",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 105,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf4312b8b1c3c4a5052a275",
+                        "name": "Cośtam",
+                        "value": 210,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T20:27:24.343Z",
+                        "updatedAt": "2019-06-02T20:27:24.343Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf431b235e2ab2cf0b35417",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 105,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf431b135e2ab2cf0b35416",
+                        "name": "Cośtam",
+                        "value": 210,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T20:29:38.322Z",
+                        "updatedAt": "2019-06-02T20:29:38.322Z",
+                        "__v": 0
+                      },
+                      {
+                        "debtors": [
+                          {
+                            "paid": false,
+                            "_id": "5cf4339f35e2ab2cf0b3541a",
+                            "user": "5cdb048df901520606166a59",
+                            "value": 1000,
+                            "__v": 0
+                          }
+                        ],
+                        "_id": "5cf4339f35e2ab2cf0b35419",
+                        "name": "Rachunki za maj",
+                        "value": 2000,
+                        "user": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "createdAt": "2019-06-02T20:37:51.990Z",
+                        "updatedAt": "2019-06-02T20:37:51.990Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "POST /groups/{groupId}/bills": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "summary": "Create new bill",
+        "description": "Create new bill",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "name": "Rachunki",
+                  "value": 33
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "bill": {
+                      "debtors": [
+                        "5cf436bcd9aec4139c179b25",
+                        "5cf436bcd9aec4139c179b26"
+                      ],
+                      "_id": "5cf436bcd9aec4139c179b24",
+                      "name": "Rachunki",
+                      "value": 33,
+                      "user": "5cdb048df901520606166a59",
+                      "createdAt": "2019-06-02T20:51:08.478Z",
+                      "updatedAt": "2019-06-02T20:51:08.478Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/bills/{billId}/paid": {
+      "post": {
+        "tags": [
+          "Bills"
+        ],
+        "summary": "Sets bill as paid",
+        "description": "Sets bill as paid",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "debtor": {
+                      "paid": true,
+                      "_id": "5cf436bcd9aec4139c179b25",
+                      "user": "5cdb048df901520606166a59",
+                      "value": 16.5,
+                      "__v": 0
+                    }
+                  }
                 }
               }
             }
