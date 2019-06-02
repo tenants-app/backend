@@ -1,67 +1,92 @@
 import mongoose from 'mongoose';
 import crypto from 'crypto';
+
 const User = mongoose.model('User');
 const Group = mongoose.model('Group');
 const GroupActivationLink = mongoose.model('GroupActivationLink');
 
 export default {
 
-    addGroup: (req, res, next) => {
+    addGroup: (request, response) => {
         let group = new Group();
-        group.name = req.body.name;
-        group.owner = req.user._id;
-        group.members.push(req.user._id);
-    
-        group.save().then(()=>{
-            return res.json({group: group});
+        group.name = request.body.name;
+        group.owner = request.user._id;
+        group.members.push(request.user._id);
+
+        group.save().then(() => {
+            return response.json({group: group});
         }).catch((err) => {
-            return res.status(400).json(err);
+            return response.status(400).json(err);
         });
     },
 
-    getGroup: async (req, res, next) => {
-        Group.findOne({_id: req.params.id}).then((group) => {
-            if (!group.members.some(member => member.equals(req.user._id))) {
-                return res.status(403).json({message: "Not a group member"});
+    getGroup: async (request, response) => {
+        Group.findOne({_id: request.params.groupId}).then((group) => {
+            if (!group.members.some(member => member.equals(request.user._id))) {
+                return response.status(403).json({message: "Not a group member"});
             }
-            return res.json(group);
+            return response.json({group: group});
         }).catch((err) => {
-            return res.status(404).json({error: {message: "Group cannot be found"}});
+            return response.status(404).json({error: {message: "Group cannot be found"}});
         });
     },
 
-    generateMemberLink: (req, res, next) => {
+    getGroupMembers: async (request, response) => {
+        Group.findOne({_id: request.params.groupId}).populate(['members']).then((group) => {
+            return response.json({members: group.members});
+        }).catch((err) => {
+            return response.status(404).json({error: {message: "Group cannot be found"}});
+        });
+    },
+
+    getGroupMember: (request, response) => {
+        Group.findOne({_id: request.params.groupId}).populate({
+            path: 'members',
+            match: {
+                _id: request.params.id
+            }
+        }).then((group) => {
+            if (group.members[0] == null) {
+                throw new Error('Member not found');
+            }
+            return response.json({member: group.members[0]});
+        }).catch((err) => {
+            return response.status(404).json({error: {message: err.message}});
+        });
+    },
+
+    generateMemberLink: (request, response, next) => {
         let memberLink = new GroupActivationLink();
-        memberLink.email = req.body.email;
-        memberLink.group_id = req.body.group_id;
+        memberLink.email = request.body.email;
+        memberLink.group_id = request.body.group_id;
         memberLink.token = crypto.randomBytes(64).toString('hex');
-        memberLink.link = `${req.protocol}://${req.get('host')}/groups/activate_member/${memberLink.token}`;
+        memberLink.link = `${request.protocol}://${request.get('host')}/groups/activate_member/${memberLink.token}`;
 
-        memberLink.save().then(()=>{
-            return res.json({link: memberLink.link});
+        memberLink.save().then(() => {
+            return response.json({link: memberLink.link});
         }).catch((err) => {
-            return res.status(400).json(err);
+            return response.status(400).json(err);
         });
     },
 
-    activateMember: async (req, res, next) => {
-        let linkToken = req.params.token;
+    activateMember: async (request, response) => {
+        let linkToken = request.params.token;
 
-        let activationLink = await GroupActivationLink.findOne({token:linkToken});
+        let activationLink = await GroupActivationLink.findOne({token: linkToken});
         let user = await User.findOne({email: activationLink.email});
         let group = await Group.findOne({_id: activationLink.group_id});
 
-        if(!activationLink || !user || !group){
-            return res.redirect(process.env.FRONTEND_URL + '/fail');
+        if (!activationLink || !user || !group) {
+            return response.redirect(process.env.FRONTEND_URL + '/fail');
         }
 
         group.attachMember(user);
-        
+
         group.save().then(() => {
-            return res.redirect(process.env.FRONTEND_URL + '/success');
+            return response.redirect(process.env.FRONTEND_URL + '/success');
         }).catch((err) => {
-            return res.redirect(process.env.FRONTEND_URL + '/fail');
+            return response.redirect(process.env.FRONTEND_URL + '/fail');
         });
     }
-    
+
 }
