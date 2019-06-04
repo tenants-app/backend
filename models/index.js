@@ -3,6 +3,7 @@ import Group from './Group';
 import GroupActivationLink from './GroupActivationLink';
 import Bill from './Bill'
 import BillDebtor from './BillDebtor'
+import Debt from './Debt'
 
 export default {
     User, 
@@ -10,4 +11,5 @@ export default {
     GroupActivationLink,
     BillDebtor,
     Bill,
+    Debt,
 }

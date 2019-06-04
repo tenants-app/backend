@@ -2,6 +2,7 @@ import express from 'express';
 import passport from 'passport';
 import GroupController from '../controllers/groups'
 import BillController from '../controllers/bills'
+import DebtController from '../controllers/debts'
 import Validator from '../validators/requests';
 import isGroupMember from "../middlewares/IsGroupMember";
 const router = express.Router();
@@ -18,5 +19,10 @@ router.post('/:groupId/bills', [checkAuth, isGroupMember], Validator.addBillRequ
 router.get('/:groupId/bills', [checkAuth, isGroupMember], BillController.getBills);
 router.get('/:groupId/bills/:id', [checkAuth, isGroupMember], BillController.getBill);
 router.post('/:groupId/bills/:id/paid', [checkAuth, isGroupMember], BillController.setAsPaid);
+
+router.post('/:groupId/debts', [checkAuth, isGroupMember], Validator.addDebtRequest, DebtController.addDebt);
+router.get('/:groupId/debts', [checkAuth, isGroupMember], DebtController.getDebts);
+router.get('/:groupId/debts/given', [checkAuth, isGroupMember], DebtController.getLoansGiven);
+router.post('/:groupId/debts/:id/paid', [checkAuth, isGroupMember], DebtController.setAsPaid);
 
 export default router;

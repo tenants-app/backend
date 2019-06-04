@@ -590,7 +590,7 @@
         }
       }
     },
-    "POST /groups/{groupId}/bills": {
+    "/groups/{groupId}/bills": {
       "post": {
         "tags": [
           "Bills"
@@ -727,6 +727,565 @@
                       },
                       "createdAt": "2019-06-02T20:51:08.478Z",
                       "updatedAt": "2019-06-02T20:51:08.478Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/debts ": {
+      "get": {
+        "tags": [
+          "Debts"
+        ],
+        "summary": "Get my debts",
+        "description": "Get my debts",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "debts": [
+                      {
+                        "paid": false,
+                        "_id": "5cf6e0fa4978db3d44d67458",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T21:22:02.821Z",
+                        "updatedAt": "2019-06-04T21:22:02.821Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6da8784b70130589844eb",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:54:31.672Z",
+                        "updatedAt": "2019-06-04T21:21:57.543Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d808082ca84a20fb1f5f",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:52.740Z",
+                        "updatedAt": "2019-06-04T20:43:52.740Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d808082ca84a20fb1f5e",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:52.294Z",
+                        "updatedAt": "2019-06-04T21:01:52.983Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": true,
+                        "_id": "5cf6d807082ca84a20fb1f5d",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:51.685Z",
+                        "updatedAt": "2019-06-04T20:59:46.822Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d807082ca84a20fb1f5c",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:51.238Z",
+                        "updatedAt": "2019-06-04T20:43:51.238Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d806082ca84a20fb1f5b",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:50.576Z",
+                        "updatedAt": "2019-06-04T20:43:50.576Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d805082ca84a20fb1f5a",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:49.581Z",
+                        "updatedAt": "2019-06-04T20:43:49.581Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/debts": {
+      "post": {
+        "tags": [
+          "Debts"
+        ],
+        "summary": "Create new debt / give a loan",
+        "description": "Create new debt / give a loan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "name": "Pożyczka",
+                  "value": 33,
+                  "debtor": ":debtor_id"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "debt": {
+                      "paid": false,
+                      "_id": "5cf6e52c39de05512077dfbc",
+                      "name": "testing",
+                      "holder": "5cdb048df901520606166a59",
+                      "debtor": "5cdb048df901520606166a59",
+                      "value": 33,
+                      "createdAt": "2019-06-04T21:39:56.475Z",
+                      "updatedAt": "2019-06-04T21:39:56.475Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/debts/given": {
+      "get": {
+        "tags": [
+          "Debts"
+        ],
+        "summary": "Get given loans",
+        "description": "Get given loans",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "debts": [
+                      {
+                        "paid": false,
+                        "_id": "5cf6e0fa4978db3d44d67458",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T21:22:02.821Z",
+                        "updatedAt": "2019-06-04T21:22:02.821Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6da8784b70130589844eb",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:54:31.672Z",
+                        "updatedAt": "2019-06-04T21:21:57.543Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d808082ca84a20fb1f5f",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:52.740Z",
+                        "updatedAt": "2019-06-04T20:43:52.740Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d808082ca84a20fb1f5e",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:52.294Z",
+                        "updatedAt": "2019-06-04T21:01:52.983Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": true,
+                        "_id": "5cf6d807082ca84a20fb1f5d",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:51.685Z",
+                        "updatedAt": "2019-06-04T20:59:46.822Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d807082ca84a20fb1f5c",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:51.238Z",
+                        "updatedAt": "2019-06-04T20:43:51.238Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d806082ca84a20fb1f5b",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:50.576Z",
+                        "updatedAt": "2019-06-04T20:43:50.576Z",
+                        "__v": 0
+                      },
+                      {
+                        "paid": false,
+                        "_id": "5cf6d805082ca84a20fb1f5a",
+                        "name": "Rachunki",
+                        "holder": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "debtor": {
+                          "_id": "5cdb048df901520606166a59",
+                          "username": "test testowski",
+                          "email": "test@example.com",
+                          "bank_account_number": "2137",
+                          "createdAt": "2019-05-14T18:10:22.313Z",
+                          "updatedAt": "2019-05-14T18:10:22.313Z",
+                          "__v": 0
+                        },
+                        "value": 33,
+                        "createdAt": "2019-06-04T20:43:49.581Z",
+                        "updatedAt": "2019-06-04T20:43:49.581Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/debts/{debtId}/paid": {
+      "post": {
+        "tags": [
+          "Debts"
+        ],
+        "summary": "Sets debt as paid",
+        "description": "Sets debt as paid",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "debt": {
+                      "paid": false,
+                      "_id": "5cf6e4a547bde53334422ce9",
+                      "name": "Rachunek",
+                      "holder": "5cdb048df901520606166a59",
+                      "debtor": "5cdb048df901520606166a59",
+                      "value": 33,
+                      "createdAt": "2019-06-04T21:37:41.152Z",
+                      "updatedAt": "2019-06-04T21:37:41.152Z",
                       "__v": 0
                     }
                   }
