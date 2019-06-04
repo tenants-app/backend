@@ -16,6 +16,7 @@ router.get('/activate_member/:token', GroupController.activateMember);
 
 router.post('/:groupId/bills', [checkAuth, isGroupMember], Validator.addBillRequest, BillController.addBill);
 router.get('/:groupId/bills', [checkAuth, isGroupMember], BillController.getBills);
+router.get('/:groupId/bills/:id', [checkAuth, isGroupMember], BillController.getBill);
 router.post('/:groupId/bills/:id/paid', [checkAuth, isGroupMember], BillController.setAsPaid);
 
 export default router;
