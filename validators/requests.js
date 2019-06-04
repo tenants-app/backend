@@ -41,6 +41,16 @@ export default {
 
         handle(request, response, next);
     },
+
+    addDebtRequest: (request, response, next) => {
+        request.check('name').exists().withMessage('Name is required');
+        request.check('name').isString().withMessage('Name must be string');
+        request.check('value').exists().withMessage('Value is required');
+        request.check('value').isNumeric().withMessage('Value must be numeric');
+        request.check('debtor').exists().withMessage('Debtor is required');
+
+        handle(request, response, next);
+    },
     
 }
 
