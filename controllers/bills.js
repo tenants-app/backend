@@ -1,9 +1,7 @@
 import mongoose from 'mongoose';
 
 const Bill = mongoose.model('Bill');
-const User = mongoose.model('User');
 const Group = mongoose.model('Group');
-const GroupActivationLink = mongoose.model('GroupActivationLink');
 const BillDebtor = mongoose.model('BillDebtor');
 
 export default {
@@ -51,7 +49,7 @@ export default {
                         match: {
                             user: request.user._id
                         },
-                        options: { limit: 1 }
+                        options: {limit: 1}
                     }
                 ],
                 options: {
@@ -62,6 +60,29 @@ export default {
             }
         ]).then((group) => {
             return response.json({bills: group.bills});
+        }).catch((err) => {
+            return response.status(404).json({error: {message: "Group cannot be found"}});
+        });
+    },
+
+    getBill: (request, response) => {
+        Bill.findOne({_id: request.params.id}).populate([
+            {
+                path: 'user',
+                model: 'User'
+            },
+            {
+                path: 'debtors',
+                model: 'BillDebtor',
+                populate: [
+                    {
+                        path: 'user',
+                        model: 'User'
+                    },
+                ],
+            }
+        ]).then((bill) => {
+            return response.json({bill: bill});
         }).catch((err) => {
             return response.status(404).json({error: {message: "Group cannot be found"}});
         });
