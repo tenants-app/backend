@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const Bill = mongoose.model('Bill');
 const Group = mongoose.model('Group');
-const BillDebtor = mongoose.model('BillDebtor');
+const Debtor = mongoose.model('Debtor');
 
 export default {
 
@@ -16,7 +16,7 @@ export default {
         await group.attachBill(bill);
 
         group.members.forEach(function (debtor) {
-            let billDebtor = new BillDebtor();
+            let billDebtor = new Debtor();
             billDebtor.user = debtor._id;
             billDebtor.value = Math.round(bill.value / group.members.length * 100) / 100;
 
@@ -45,7 +45,7 @@ export default {
                     },
                     {
                         path: 'debtors',
-                        model: 'BillDebtor',
+                        model: 'Debtor',
                         match: {
                             user: request.user._id
                         },
@@ -73,7 +73,7 @@ export default {
             },
             {
                 path: 'debtors',
-                model: 'BillDebtor',
+                model: 'Debtor',
                 populate: [
                     {
                         path: 'user',
@@ -92,7 +92,7 @@ export default {
         Bill.findOne({_id: request.params.id}).populate([
             {
                 path: 'debtors',
-                model: 'BillDebtor',
+                model: 'Debtor',
                 match: {
                     user: request.user._id
                 },

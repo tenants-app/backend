@@ -5,7 +5,7 @@ const BillSchema = new mongoose.Schema({
     name: String,
     value: Number,
     user: { type: Schema.Types.ObjectId, ref: 'User' },
-    debtors: [{ type: Schema.Types.ObjectId, ref: 'BillDebtor' }],
+    debtors: [{ type: Schema.Types.ObjectId, ref: 'Debtor' }],
   }, {timestamps: true});
 
 BillSchema.methods.attachDebtor = function(debtor) {
