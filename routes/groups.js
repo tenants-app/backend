@@ -4,6 +4,7 @@ import GroupController from '../controllers/groups'
 import BillController from '../controllers/bills'
 import DebtController from '../controllers/debts'
 import ShoppingListController from '../controllers/shoppingList'
+import DutiesController from '../controllers/duties'
 import Validator from '../validators/requests';
 import isGroupMember from "../middlewares/IsGroupMember";
 const router = express.Router();
@@ -28,5 +29,8 @@ router.post('/:groupId/debts/:id/paid', [checkAuth, isGroupMember], DebtControll
 
 router.post('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.addShoppingList);
 router.get('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.getShoppingLists);
+
+router.post('/:groupId/duties', [checkAuth, isGroupMember], DutiesController.addDuty);
+router.get('/:groupId/duties', [checkAuth, isGroupMember], DutiesController.getDuties);
 
 export default router;

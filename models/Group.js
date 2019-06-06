@@ -7,6 +7,7 @@ const GroupSchema = new mongoose.Schema({
     bills: [{ type: Schema.Types.ObjectId, ref: 'Bill' }],
     debts: [{ type: Schema.Types.ObjectId, ref: 'Debt' }],
     shoppingLists: [{ type: Schema.Types.ObjectId, ref: 'ShoppingList' }],
+    duties: [{ type: Schema.Types.ObjectId, ref: 'Duty' }],
     members: [{ type: Schema.Types.ObjectId, ref: 'User' }]
   }, {timestamps: true});
 
@@ -39,6 +40,14 @@ GroupSchema.methods.attachDebt = function(debt) {
 
     this.save().catch((err) => {
         throw new Error("Couldn't attach debt")
+    });
+};
+
+GroupSchema.methods.attachDutyList = function(duty) {
+    this.duties.push(duty._id);
+
+    this.save().catch((err) => {
+        throw new Error("Couldn't attach duty")
     });
 };
 
