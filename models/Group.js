@@ -43,7 +43,7 @@ GroupSchema.methods.attachDebt = function(debt) {
     });
 };
 
-GroupSchema.methods.attachDutyList = function(duty) {
+GroupSchema.methods.attachDuty = function(duty) {
     this.duties.push(duty._id);
 
     this.save().catch((err) => {

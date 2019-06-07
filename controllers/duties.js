@@ -2,25 +2,26 @@ import mongoose from 'mongoose';
 
 const Group = mongoose.model('Group');
 const Duty = mongoose.model('Duty');
-const DutyList = mongoose.model('DutyList');
+const DutyOrder = mongoose.model('DutyOrder');
 
 export default {
     addDuty: async (request, response) => {
-        let dutyList = new DutyList();
+        let dutyList = new Duty();
+        dutyList.length = request.body.length;
 
         let group = await Group.findOne({_id: request.params.groupId}).populate('members');
-        await group.attachDutyList(dutyList);
+        await group.attachDuty(dutyList);
 
-        request.body.duties.forEach(function (duty) {
-            let newDuty = new Duty();
-            newDuty.user = duty.member;
-            newDuty.name = duty.duty;
+        request.body.order.forEach(function (duty) {
+            let dutyOrder = new DutyOrder();
+            dutyOrder.user = duty.member;
+            dutyOrder.order = duty.order;
 
-            newDuty.save().catch((err) => {
+            dutyOrder.save().catch((err) => {
                 return response.status(400).json(err);
             });
 
-            dutyList.attachDuty(newDuty)
+            dutyList.attachDutyOrder(dutyOrder)
         });
 
         dutyList.save().then((dutyList) => {
@@ -34,24 +35,15 @@ export default {
         Group.findOne({_id: request.params.groupId}).populate([
             {
                 path: 'duties',
-                populate: [
-                    {
-                        path: 'user',
-                        model: 'User'
-                    },
-                    {
-                        path: 'duties',
-                        model: 'Duty'
-                    }
-                ],
+                model: 'Duty',
                 options: {
+                    limit: 1,
                     sort: {
                         createdAt: -1
                     }
                 }
             }
         ]).then((group) => {
-
             let duties = group.duties;
 
             return response.json({duties: duties});

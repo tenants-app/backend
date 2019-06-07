@@ -6,8 +6,8 @@ import Debtor from './Debtor'
 import Debt from './Debt'
 import ShoppingList from './ShoppingList'
 import Product from './Product'
+import DutyOrder from './DutyOrder'
 import Duty from './Duty'
-import DutyList from './DutyList'
 
 export default {
     User, 
@@ -18,6 +18,6 @@ export default {
     Debt,
     ShoppingList,
     Product,
-    Duty,
-    DutyList
+    DutyOrder,
+    Duty
 }
