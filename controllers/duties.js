@@ -12,16 +12,21 @@ export default {
         let group = await Group.findOne({_id: request.params.groupId}).populate('members');
         await group.attachDuty(dutyList);
 
+        let todayDate = new Date();
+
         request.body.order.forEach(function (duty) {
-            let dutyOrder = new DutyOrder();
-            dutyOrder.user = duty.member;
-            dutyOrder.order = duty.order;
+            for (let i = 0; i < dutyList.length; i++) {
+                let dutyOrder = new DutyOrder();
+                dutyOrder.user = duty.member;
+                todayDate.setDate(todayDate.getDate() + 1)
+                dutyOrder.date = todayDate.toISOString()
 
-            dutyOrder.save().catch((err) => {
-                return response.status(400).json(err);
-            });
+                dutyOrder.save().catch((err) => {
+                    return response.status(400).json(err);
+                });
 
-            dutyList.attachDutyOrder(dutyOrder)
+                dutyList.attachDutyOrder(dutyOrder)
+            }
         });
 
         dutyList.save().then((dutyList) => {
@@ -35,7 +40,13 @@ export default {
         Group.findOne({_id: request.params.groupId}).populate([
             {
                 path: 'duties',
-                model: 'Duty',
+                populate: [
+                    {
+                        path: 'dutyOrder',
+                        model: 'DutyOrder',
+                    },
+                ],
+
                 options: {
                     limit: 1,
                     sort: {

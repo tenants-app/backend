@@ -30,7 +30,7 @@ router.post('/:groupId/debts/:id/paid', [checkAuth, isGroupMember], DebtControll
 router.post('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.addShoppingList);
 router.get('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.getShoppingLists);
 
-router.post('/:groupId/duties', [checkAuth, isGroupMember], DutiesController.addDuty);
+router.post('/:groupId/duties', [checkAuth, isGroupMember], Validator.addDutyRequest, DutiesController.addDuty);
 router.get('/:groupId/duties', [checkAuth, isGroupMember], DutiesController.getDuties);
 
 export default router;

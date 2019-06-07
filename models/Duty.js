@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const DutySchema = new mongoose.Schema({
     length: Number,
-    dutyOrder: [{type: Schema.Types.ObjectId, ref: 'Duty'}]
+    dutyOrder: [{type: Schema.Types.ObjectId, ref: 'DutyOrder'}]
 }, {timestamps: true});
 
 DutySchema.methods.attachDutyOrder = function (dutyOrder) {
