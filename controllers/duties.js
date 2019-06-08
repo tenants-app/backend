@@ -28,6 +28,7 @@ export default {
             for (let i = 0; i < dutyList.length; i++) {
                 let dutyOrder = new DutyOrder();
                 dutyOrder.user = duty.member;
+                dutyOrder.username = duty.member.username;
                 dutyOrder.groupId = groupId;
                 todayDate.setDate(todayDate.getDate() + 1);
                 dutyOrder.date = todayDate.toISOString().slice(0, 10);
@@ -64,9 +65,9 @@ export default {
                     }
                 }
             }
-        ]).then((group) => {
-            let duties = group.duties;
-
+        ]).then( (group) => {
+            let duties;
+            group.duties[0] ? duties = group.duties[0].dutyOrder : duties = [];
             return response.json({duties: duties});
         }).catch((err) => {
             return response.status(404).json({error: {message: "Group cannot be found"}});

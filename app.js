@@ -86,6 +86,5 @@ let cron = require('node-cron');
 import mailer from "./controllers/mailer"
 
 cron.schedule('1 12 * * *', () => {
-  console.log("Running the cron")
   mailer.runCron();
 });
