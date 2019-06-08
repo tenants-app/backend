@@ -24,11 +24,11 @@ export default {
 
         let todayDate = new Date();
 
-        request.body.order.forEach(function (duty) {
+        request.body.order.forEach(function (member) {
             for (let i = 0; i < dutyList.length; i++) {
                 let dutyOrder = new DutyOrder();
-                dutyOrder.user = duty.member;
-                dutyOrder.username = duty.member.username;
+                dutyOrder.user = member;
+                dutyOrder.username = member.username;
                 dutyOrder.groupId = groupId;
                 todayDate.setDate(todayDate.getDate() + 1);
                 dutyOrder.date = todayDate.toISOString().slice(0, 10);
@@ -65,7 +65,7 @@ export default {
                     }
                 }
             }
-        ]).then( (group) => {
+        ]).then((group) => {
             let duties;
             group.duties[0] ? duties = group.duties[0].dutyOrder : duties = [];
             return response.json({duties: duties});

@@ -1295,6 +1295,119 @@
           }
         }
       }
+    },
+    "/groups/{groupId}/duties": {
+      "get": {
+        "tags": [
+          "Duties"
+        ],
+        "summary": "Get group duties schedule",
+        "description": "Get group duties schedule",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "duties": [
+                      {
+                        "_id": "5cfba7330746592320309dac",
+                        "user": "5cd6e98fe421633b3802a5d3",
+                        "username": "test testowy",
+                        "groupId": "5cf3ac7819f798363008c0c0",
+                        "date": "2019-06-09",
+                        "createdAt": "2019-06-08T12:16:51.727Z",
+                        "updatedAt": "2019-06-08T12:16:51.727Z",
+                        "__v": 0
+                      },
+                      {
+                        "_id": "5cfba7330746592320309dac",
+                        "user": "5cd6e98fe421633b3802a5d3",
+                        "username": "example",
+                        "groupId": "5cf3ac7819f798363008c0c0",
+                        "date": "2019-06-10",
+                        "createdAt": "2019-06-08T12:16:51.727Z",
+                        "updatedAt": "2019-06-08T12:16:51.727Z",
+                        "__v": 0
+                      }
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/groups/{groupId}/duties/": {
+      "post": {
+        "tags": [
+          "Duties"
+        ],
+        "summary": "Create new duties schedule",
+        "description": "Create new duties schedule",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "example": {
+                  "length": 1,
+                  "order": [
+                    {
+                      "member": {
+                        "_id": "5cd6e98fe421633b3802a5d3",
+                        "username": "test testowski",
+                        "email": "test@example.com",
+                        "bank_account_number": "2137",
+                        "createdAt": "2019-05-11T15:26:08.873Z",
+                        "updatedAt": "2019-05-11T15:26:08.873Z",
+                        "__v": 0
+                      }
+                    },
+                    {
+                      "member": {
+                        "_id": "5cd6e98fe421633b3802a5d1",
+                        "username": "example",
+                        "email": "example@example.com",
+                        "bank_account_number": "2137",
+                        "createdAt": "2019-05-11T15:26:08.873Z",
+                        "updatedAt": "2019-05-11T15:26:08.873Z",
+                        "__v": 0
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "example": {
+                    "dutyList": {
+                      "dutyOrder": [
+                        "5cfba99f005ad70c306d9acb",
+                        "5cfba99f005ad70c306d9acc"
+                      ],
+                      "_id": "5cfba99e005ad70c306d9aca",
+                      "length": 1,
+                      "groupId": "5cf3ac7819f798363008c0c0",
+                      "createdAt": "2019-06-08T12:27:11.394Z",
+                      "updatedAt": "2019-06-08T12:27:11.394Z",
+                      "__v": 0
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
