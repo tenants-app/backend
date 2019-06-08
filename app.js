@@ -84,7 +84,12 @@ const server = app.listen( process.env.PORT || 3000, () => {
 
 let cron = require('node-cron');
 import mailer from "./controllers/mailer"
+import duties from "./controllers/duties"
 
 cron.schedule('1 12 * * *', () => {
   mailer.runCron();
+});
+
+cron.schedule('1 3 * * *', () => {
+  duties.runCron();
 });
