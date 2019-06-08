@@ -77,6 +77,9 @@ export default {
                     {
                         path: 'dutyOrder',
                         model: 'DutyOrder',
+                        options: {
+                            limit: 7
+                        }
                     },
                 ],
 
