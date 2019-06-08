@@ -29,6 +29,7 @@ export default {
         await group.attachDuty(dutyList);
 
         let todayDate = new Date();
+        todayDate.setDate(todayDate.getDate() - 1);
 
         let count = 0;
         do {
