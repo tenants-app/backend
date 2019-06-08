@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
 const DutySchema = new mongoose.Schema({
+    groupId: String,
     length: Number,
     dutyOrder: [{type: Schema.Types.ObjectId, ref: 'DutyOrder'}]
 }, {timestamps: true});

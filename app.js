@@ -81,3 +81,11 @@ app.use((err, req, res, next) => {
 const server = app.listen( process.env.PORT || 3000, () => {
   console.log('Web server running on port ' + server.address().port);
 });
+
+let cron = require('node-cron');
+import mailer from "./controllers/mailer"
+
+cron.schedule('1 12 * * *', () => {
+  console.log("Running the cron")
+  mailer.runCron();
+});
