@@ -26,7 +26,7 @@ router.get('/:groupId/debts', [checkAuth, isGroupMember], DebtController.getDebt
 router.get('/:groupId/debts/given', [checkAuth, isGroupMember], DebtController.getLoansGiven);
 router.post('/:groupId/debts/:id/paid', [checkAuth, isGroupMember], DebtController.setAsPaid);
 
-router.post('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.addShoppingList);
+router.post('/:groupId/shoppingLists', [checkAuth, isGroupMember], Validator.addShoppingListRequest, ShoppingListController.addShoppingList);
 router.get('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.getShoppingLists);
 
 export default router;
