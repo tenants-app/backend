@@ -42,6 +42,7 @@ export default {
             shoppingList.attachDebtor(newDebtor)
         });
 
+        shoppingList.value = sum;
         shoppingList.save().then((shoppingList) => {
             return response.json({shoppingList: shoppingList});
         }).catch((err) => {
@@ -50,6 +51,38 @@ export default {
     },
 
     getShoppingLists: (request, response) => {
+        Group.findOne({_id: request.params.groupId}).populate([
+            {
+                path: 'shoppingLists',
+                populate: [
+                    {
+                        path: 'user',
+                        model: 'User'
+                    },
+                    {
+                        path: 'debtors',
+                        model: 'Debtor',
+                        match: {
+                            user: request.user._id
+                        },
+                    }
+                ],
+                options: {
+                    sort: {
+                        createdAt: -1
+                    }
+                }
+            }
+        ]).then((group) => {
+            let lists = group.shoppingLists;
+
+            return response.json({shoppingLists: lists});
+        }).catch((err) => {
+            return response.status(404).json({error: {message: "Group cannot be found"}});
+        });
+    },
+
+    getShoppingList: (request, response) => {
         Group.findOne({_id: request.params.groupId}).populate([
             {
                 path: 'shoppingLists',
@@ -74,19 +107,7 @@ export default {
                 }
             }
         ]).then((group) => {
-
             let lists = group.shoppingLists;
-
-
-            lists.forEach(list => {
-                list.sum = 0;
-                console.log(list)
-                list.debtors.forEach(debtor => {
-                    console.log(debtor)
-                    list.sum += debtor.value;
-                });
-            });
-
 
             return response.json({shoppingLists: lists});
         }).catch((err) => {
