@@ -2,14 +2,24 @@ import User from './User';
 import Group from './Group';
 import GroupActivationLink from './GroupActivationLink';
 import Bill from './Bill'
-import BillDebtor from './BillDebtor'
+import Debtor from './Debtor'
 import Debt from './Debt'
+import ShoppingList from './ShoppingList'
+import Product from './Product'
+import DutyOrder from './DutyOrder'
+import Duty from './Duty'
+import MembersOrder from './MembersOrder'
 
 export default {
     User, 
     Group, 
     GroupActivationLink,
-    BillDebtor,
+    Debtor,
     Bill,
     Debt,
+    ShoppingList,
+    Product,
+    DutyOrder,
+    Duty,
+    MembersOrder
 }

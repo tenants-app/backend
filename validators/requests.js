@@ -51,7 +51,24 @@ export default {
 
         handle(request, response, next);
     },
-    
+
+    addShoppingListRequest: (request, response, next) => {
+        request.check('name').exists().withMessage('Name is required');
+        request.check('products').exists().withMessage('Products are required');
+        request.check('products').notEmpty().withMessage('Product list can\'t be empty');
+        request.check('products').isArray().withMessage('Products needs to be array');
+
+        handle(request, response, next);
+    },
+
+    addDutyRequest: (request, response, next) => {
+        request.check('length').exists().withMessage('Length is required');
+        request.check('length').isNumeric().withMessage('Length must be integer');
+        request.check('length').isLength({min: 1, max: 1}).withMessage('Length must be up to 9 days');
+        request.check('order').exists().withMessage('Order is required');
+
+        handle(request, response, next);
+    },
 }
 
 const handle = (request, response, next) => {

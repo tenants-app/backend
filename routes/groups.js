@@ -3,6 +3,8 @@ import passport from 'passport';
 import GroupController from '../controllers/groups'
 import BillController from '../controllers/bills'
 import DebtController from '../controllers/debts'
+import ShoppingListController from '../controllers/shoppingList'
+import DutiesController from '../controllers/duties'
 import Validator from '../validators/requests';
 import isGroupMember from "../middlewares/IsGroupMember";
 const router = express.Router();
@@ -24,5 +26,13 @@ router.post('/:groupId/debts', [checkAuth, isGroupMember], Validator.addDebtRequ
 router.get('/:groupId/debts', [checkAuth, isGroupMember], DebtController.getDebts);
 router.get('/:groupId/debts/given', [checkAuth, isGroupMember], DebtController.getLoansGiven);
 router.post('/:groupId/debts/:id/paid', [checkAuth, isGroupMember], DebtController.setAsPaid);
+
+router.post('/:groupId/shoppingLists', [checkAuth, isGroupMember], Validator.addShoppingListRequest, ShoppingListController.addShoppingList);
+router.get('/:groupId/shoppingLists', [checkAuth, isGroupMember], ShoppingListController.getShoppingLists);
+router.get('/:groupId/shoppingLists/:id', [checkAuth, isGroupMember], ShoppingListController.getShoppingList);
+router.post('/:groupId/shoppingLists/:id/paid', [checkAuth, isGroupMember], ShoppingListController.setAsPaid);
+
+router.post('/:groupId/duties', [checkAuth, isGroupMember], Validator.addDutyRequest, DutiesController.addDuty);
+router.get('/:groupId/duties', [checkAuth, isGroupMember], DutiesController.getDuties);
 
 export default router;
