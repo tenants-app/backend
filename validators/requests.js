@@ -60,6 +60,15 @@ export default {
 
         handle(request, response, next);
     },
+
+    addDutyRequest: (request, response, next) => {
+        request.check('length').exists().withMessage('Length is required');
+        request.check('length').isNumeric().withMessage('Length must be integer');
+        request.check('length').isLength({min: 1, max: 1}).withMessage('Length must be up to 9 days');
+        request.check('order').exists().withMessage('Order is required');
+
+        handle(request, response, next);
+    },
 }
 
 const handle = (request, response, next) => {

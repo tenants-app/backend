@@ -49,6 +49,30 @@ export default {
         });
     },
 
+    getShoppingList: (request, response) => {
+        ShoppingList.findOne({_id: request.params.id}).populate([
+            {
+                path: 'products',
+            },
+            {
+                path: 'debtors',
+                populate: [
+                    {
+                        path: 'user',
+                        model: 'User'
+                    },
+                ],
+            },
+            {
+                path: 'user',
+            }
+        ]).then(shoppingList => {
+            return response.json({shoppingList: shoppingList});
+        }).catch((err) => {
+            return response.status(404).json({error: {message: "Shopping list cannot be found"}});
+        });
+    },
+
     getShoppingLists: (request, response) => {
         Group.findOne({_id: request.params.groupId}).populate([
             {
@@ -94,4 +118,26 @@ export default {
         });
     },
 
+    setAsPaid: (request, response) => {
+        ShoppingList.findOne({_id: request.params.id}).populate([
+            {
+                path: 'debtors',
+                model: 'Debtor',
+                match: {
+                    user: request.user._id
+                },
+            }
+        ]).then(shoppingList => {
+            let debtor = shoppingList.debtors[0];
+            debtor.paid = !debtor.paid;
+
+            debtor.save().then((debtor) => {
+                return response.json({debtor: debtor});
+            }).catch((err) => {
+                return response.status(400).json(err);
+            });
+        }).catch((err) => {
+            return response.status(404).json({error: {message: "Group cannot be found"}});
+        });
+    },
 }
