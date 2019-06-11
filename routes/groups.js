@@ -7,6 +7,7 @@ import ShoppingListController from '../controllers/shoppingList'
 import DutiesController from '../controllers/duties'
 import Validator from '../validators/requests';
 import isGroupMember from "../middlewares/IsGroupMember";
+import MailerController from "../controllers/mailer";
 const router = express.Router();
 const checkAuth = passport.authenticate('jwt', {session: false});
 
@@ -15,6 +16,7 @@ router.get('/:groupId/members', [checkAuth, isGroupMember], GroupController.getG
 router.get('/:groupId/members/:id', [checkAuth, isGroupMember], GroupController.getGroupMember);
 router.post('/new', checkAuth, Validator.addGroupRequest, GroupController.addGroup);
 router.post('/generate_member_link', checkAuth, Validator.generateMemberLinkRequest, GroupController.generateMemberLink);
+router.post('/send_member_link', checkAuth, Validator.sendMemberLinkRequest, MailerController.sendMemberLink);
 router.get('/activate_member/:token', GroupController.activateMember);
 
 router.post('/:groupId/bills', [checkAuth, isGroupMember], Validator.addBillRequest, BillController.addBill);
