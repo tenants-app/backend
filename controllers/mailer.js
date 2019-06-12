@@ -32,4 +32,30 @@ export default {
             });
         }
     },
+
+    sendMemberLink: async (request, response, next) => {
+        let email = request.body.email;
+        let link = request.body.link;
+
+        let transporter = nodemailer.createTransport({
+            service: "Gmail",
+            host: "smtp.ethereal.email",
+            auth: {
+                user: process.env.GMAIL_USER,
+                pass: process.env.GMAIL_PASSWORD
+            }
+        });
+
+        await transporter.sendMail({
+            from: '"Tenants <app.tenants@gmail.com>',
+            to: email,
+            subject: "Hello tenant",
+            text: "Join your new apartment.",
+            html: "<b>You have been invited to join a group. Copy the link below. <br/> " + link + "</b>"
+        }).then(() => {
+            return response.json({message: "Email will be sent"});
+        }).catch((err) => {
+            return response.status(400).json(err);
+        });
+    },
 }

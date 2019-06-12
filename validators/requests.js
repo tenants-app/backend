@@ -33,6 +33,13 @@ export default {
         handle(request, response, next);
     },
 
+    sendMemberLinkRequest: (request, response, next) => {
+        request.check('email').exists().withMessage('Email is required');
+        request.check('link').exists().withMessage('Link is required');
+
+        handle(request, response, next);
+    },
+
     addBillRequest: (request, response, next) => {
         request.check('name').exists().withMessage('Name is required');
         request.check('name').isString().withMessage('Name must be string');
