@@ -99,16 +99,20 @@ export default {
             }
         ]).then((group) => {
 
-            let lists = group.shoppingLists;
+            let lists = group.shoppingLists.map(list => {
+                list = list.toObject();
 
-
-            lists.forEach(list => {
-                list.sum = 0;
-                console.log(list)
+                list.value = 0;
+                
                 list.debtors.forEach(debtor => {
-                    console.log(debtor)
-                    list.sum += debtor.value;
+                    list.value += debtor.value;
                 });
+
+                list.debtors.sort((a, b) => {
+                    return b._id === request.user._id ? -1 : 1;
+                });
+
+                return list;
             });
 
 
