@@ -31,6 +31,19 @@ export default {
         });
     },
 
+    leaveGroup: async (request, response) => {
+        await Group.findOne({_id: request.params.groupId}).then(async (group) => {
+            if (!group.members.some(member => member.equals(request.user._id))) {
+                return response.status(403).json({message: "Not a group member"});
+            } else {
+                await group.detachMember(request.user._id);
+            }
+            return response.json("Group left successfully");
+        }).catch((err) => {
+            return response.status(404).json({error: {message: "Group cannot be found"}});
+        });
+    },
+
     getGroupMembers: async (request, response) => {
         Group.findOne({_id: request.params.groupId}).populate(['members']).then((group) => {
             return response.json({members: group.members});

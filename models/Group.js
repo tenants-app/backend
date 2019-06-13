@@ -20,6 +20,15 @@ GroupSchema.methods.attachMember = function (user) {
     }
 };
 
+GroupSchema.methods.detachMember = function (user) {
+    for (let i = 0; i < this.members.length; i++) {
+        if (this.members[i].toString() === user.toString()) {
+            this.members.splice(i, 1);
+        }
+    }
+    this.save()
+};
+
 GroupSchema.methods.attachBill = function (bill) {
     this.bills.push(bill._id);
 
